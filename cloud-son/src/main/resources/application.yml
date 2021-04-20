@@ -1,0 +1,12 @@
+server:
+    port: 3000
+spring:
+    application:
+        name: cloud-son
+    cloud:
+        nacos:
+            discovery:
+                namespace: public
+                server-addr: 172.16.196.2:8848
+    profiles:
+        active: Ryan

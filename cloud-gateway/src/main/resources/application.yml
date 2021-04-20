@@ -1,0 +1,28 @@
+server:
+    port: 8000
+spring:
+    profiles:
+        active:
+    application:
+        name: cloud-gateway
+    cloud:
+        nacos:
+            discovery:
+                namespace: public
+                server-addr: 172.16.196.2:8848
+
+        gateway:
+            routes:
+                - id: cloud-son
+                  uri: lb://cloud-son
+                  predicates:
+                      - Path=/sons/**
+                  filters:
+                      - StripPrefix=1
+
+
+cloud-son:
+    ribbon:
+        NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+        NFLoadBalancerPingClassName: com.example.cloud.gateway.config.HealthCheck
+

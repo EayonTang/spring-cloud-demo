@@ -1,0 +1,25 @@
+dubbo:
+    cloud:
+        subscribed-services: cloud-alibaba-gateway
+    protocol:
+        id: dubbo
+        name: dubbo
+        port: -1
+    scan:
+        base-packages: com.example.cloud.alibaba
+server:
+    port: 8080
+spring:
+    application:
+        name: cloud-alibaba-gateway
+    cloud:
+        nacos:
+            discovery:
+                namespace: public
+                password: nacos
+                server-addr: 172.16.196.2:8848
+                username: nacos
+        sentinel:
+            eager: true
+            transport:
+                dashboard: localhost:8080
